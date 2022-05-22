@@ -45,7 +45,6 @@ public class FragmentJuegos extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycler_juegos);
         recyclerView.setHasFixedSize(true);
-        //recyclerView.setLayoutManager( new LinearLayoutManager(getContext()));
         recyclerView.setLayoutManager( new GridLayoutManager( getContext(), 2));
 
         return view;

@@ -31,7 +31,7 @@ public class GameModel implements Serializable {
     public int getPrecio() { return precio; }
     public void setPrecio(int precio) { this.precio = precio; }
 
-    public int getBuy() { return buy; }
+    public boolean getBuy() { return (buy == 0)? false : true; }
     public void setBuy(int buy) { this.buy = buy; }
 
     @Override

@@ -3,9 +3,11 @@ package com.example.practicafinal.databases;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -35,7 +37,7 @@ public class DataHelper extends SQLiteOpenHelper {
         addVideogame(sqLiteDatabase, "Residen Evil","Campcpm", "PS4", R.drawable.resident, 40);
         addVideogame(sqLiteDatabase, "Forza","Playground Games", "XBOX", R.drawable.forza, 70);
         addVideogame(sqLiteDatabase, "Halo","Bungie Studios", "XBOX", R.drawable.halo, 60);
-        addVideogame(sqLiteDatabase, "Killer Instict","Double Helix", "XBOX", R.drawable.killer, 15);
+        addVideogame(sqLiteDatabase, "Killer Instict","Double Helix", "XBOX", 1, R.drawable.killer, 15);
         addVideogame(sqLiteDatabase, "Scrom","Ebb Software ", "XBOX", R.drawable.scrom, 20);
         addVideogame(sqLiteDatabase, "Horizon","Guerrilla Games", "PC", R.drawable.horizon, 20);
         addVideogame(sqLiteDatabase, "BloodBorme","From Software ", "PC", R.drawable.blood, 30);
@@ -48,11 +50,15 @@ public class DataHelper extends SQLiteOpenHelper {
     }
 
     public static void addVideogame (SQLiteDatabase db, String name, String company, String consola, int imageID, float price) {
+        addVideogame(db, name, company, consola, 0, imageID, price);
+    }
+
+    public static void addVideogame (SQLiteDatabase db, String name, String company, String consola, int buy, int imageID, float price) {
         ContentValues gameData = new ContentValues();
         gameData.put(SchemaDB.GAMES_NAME, name);
         gameData.put(SchemaDB.GAMES_COMPANY, company);
         gameData.put(SchemaDB.GAMES_CONSOLE, consola);
-        gameData.put(SchemaDB.GAMES_BUY, Boolean.FALSE);
+        gameData.put(SchemaDB.GAMES_BUY, buy);
         gameData.put(SchemaDB.GAMES_IMAGE, imageID);
         gameData.put(SchemaDB.GAMES_PRICE, price);
         db.insert(SchemaDB.TAB_NAME, null, gameData);
@@ -109,5 +115,34 @@ public class DataHelper extends SQLiteOpenHelper {
 
         db.close();
         return precio;
+    }
+
+    public void buyGame (String nombre, int buy, Context context) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(SchemaDB.GAMES_BUY, buy);
+
+        try{
+            db.update(SchemaDB.TAB_NAME,
+                    values,
+                    SchemaDB.GAMES_NAME + " = ?",
+                    new String[]{nombre});
+            Toast.makeText(context, "Anadido al carrito", Toast.LENGTH_SHORT).show();
+        }catch(SQLException ex){
+            Log.d("database","update data failure");
+        }
+
+        /*String querty = String.format("UPDATE %s SET %s = " + buy + " WHERE %s LIKE '%s'",
+                SchemaDB.TAB_NAME, SchemaDB.GAMES_BUY, SchemaDB.GAMES_NAME, nombre);
+        Object[] bindArgs={nombre};
+        try{
+            db.execSQL(querty, bindArgs);
+            Log.v("cheked","Cambio" + nombre);
+            //Toast.makeText(context, "Anadido al carrito", Toast.LENGTH_SHORT).show();
+        }catch(SQLException ex){
+            Log.d("database","update data failure");
+        }*/
+        db.close();
     }
 }
