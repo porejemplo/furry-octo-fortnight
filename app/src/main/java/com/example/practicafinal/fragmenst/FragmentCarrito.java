@@ -53,7 +53,7 @@ public class FragmentCarrito extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        recyclerView.setAdapter( new CarritoRVAdapter(dataHelper.readGames(" WHERE " + SchemaDB.GAMES_BUY + "= 1"), getContext()));
+        recyclerView.setAdapter( new CarritoRVAdapter(dataHelper.readGames(" WHERE " + SchemaDB.GAMES_BUY + " = 1"), getContext()));
         String precio = String.valueOf(dataHelper.precioCarrito()) + "€";
         textView.setText("Total: " + precio);
 
