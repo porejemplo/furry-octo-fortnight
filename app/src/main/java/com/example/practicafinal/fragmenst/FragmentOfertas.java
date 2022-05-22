@@ -37,7 +37,7 @@ public class FragmentOfertas extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycler_ofertas);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager( new LinearLayoutManager( getContext()));
+        recyclerView.setLayoutManager( new GridLayoutManager( getContext(), 2 ));
 
         return view;
     }

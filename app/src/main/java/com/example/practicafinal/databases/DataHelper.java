@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -89,6 +90,24 @@ public class DataHelper extends SQLiteOpenHelper {
         // at last closing our cursor
         // and returning our array list.
         gameCourses.close();
+        db.close();
         return gameModelArrayList;
+    }
+
+    public int precioCarrito() {
+        int precio = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String querty = String.format("SELECT SUM(%s) FROM %s WHERE %s = 1",
+                SchemaDB.GAMES_PRICE, SchemaDB.TAB_NAME, SchemaDB.GAMES_BUY);
+        Cursor gameCourses = db.rawQuery(querty, null);
+
+        if (gameCourses.moveToFirst()) {
+            precio = gameCourses.getInt(0);
+            // TODO: borrar log
+            Log.v("database", String.valueOf(precio));
+        }
+
+        db.close();
+        return precio;
     }
 }
