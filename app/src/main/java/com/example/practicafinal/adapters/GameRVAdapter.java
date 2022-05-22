@@ -52,8 +52,6 @@ public class GameRVAdapter extends RecyclerView.Adapter<GameRVAdapter.ViewHolder
                 boolean cheked =  holder.checkBox.isChecked();
                 String nombre = modal.getName();
                 DataHelper dataHelper = new DataHelper(context, SchemaDB.DB_NAME, null, SchemaDB.VERSION);
-                // TODO: Borrar log
-                Log.v("cheked",nombre + " " + (cheked ? "true" : "false"));
                 dataHelper.buyGame(nombre, (cheked ? 1 : 0), context);
             }
         });
@@ -77,12 +75,5 @@ public class GameRVAdapter extends RecyclerView.Adapter<GameRVAdapter.ViewHolder
             precioTxt = itemView.findViewById(R.id.item_text_precio);
             linearLayout = itemView.findViewById(R.id.item_id);
         }
-    }
-
-    public void  favoriteOnClick (View v) {
-        boolean cheked = ((CheckBox)v.findViewById(R.id.favoriteCheckbox)).isChecked();
-        String nombre = (String) ((TextView)v.findViewById(R.id.item_text_nombre)).getText();
-        // TODO: Borrar log
-        Log.v("cheked",nombre + " " + (cheked ? "true" : "false"));
     }
 }

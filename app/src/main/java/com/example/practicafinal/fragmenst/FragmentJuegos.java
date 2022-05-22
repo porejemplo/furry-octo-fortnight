@@ -15,7 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.practicafinal.R;
 import com.example.practicafinal.adapters.GameRVAdapter;
@@ -26,11 +30,15 @@ import com.example.practicafinal.model.GameModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentJuegos extends Fragment {
+public class FragmentJuegos extends Fragment implements AdapterView.OnItemSelectedListener {
     private View view;
     private DataHelper dataHelper;
 
     private RecyclerView recyclerView;
+    private Spinner spinner;
+
+    private String[] courses = { "Todas", "PS4", "XBOX", "PC"};
+    private int seleccion = 0;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -47,12 +55,44 @@ public class FragmentJuegos extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager( new GridLayoutManager( getContext(), 2));
 
+        spinner = (Spinner) view.findViewById(R.id.spinner_juegos);
+        spinner.setOnItemSelectedListener(this);
+
+        ArrayAdapter<String> ad = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, courses);
+
+        ad.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner.setAdapter(ad);
+
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        recyclerView.setAdapter(new GameRVAdapter(dataHelper.readGames(), getContext()));
+        if (seleccion == 0) {
+            recyclerView.setAdapter(new GameRVAdapter(dataHelper.readGames(), getContext()));
+        }
+        else {
+            recyclerView.setAdapter(new GameRVAdapter(dataHelper.readGames(" WHERE " + SchemaDB.GAMES_CONSOLE + " LIKE " + courses[seleccion]), getContext()));
+        }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String item = courses[i];
+        seleccion = i;
+
+        if (seleccion == 0) {
+            recyclerView.setAdapter(new GameRVAdapter(dataHelper.readGames(), getContext()));
+        } else {
+            recyclerView.setAdapter(new GameRVAdapter(dataHelper.readGames(" WHERE " + SchemaDB.GAMES_CONSOLE + " LIKE '" + courses[seleccion] + "'"), getContext()));
+        }
+
+        Toast.makeText(getContext(), "Filtrando: " + item, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

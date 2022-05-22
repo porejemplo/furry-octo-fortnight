@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     tools:context=".fragmenst.FragmentOfertas">
 
+    <Spinner
+        android:id="@+id/spinner_juegos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+    />
+
     <androidx.recyclerview.widget.RecyclerView
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:id="@+id/recycler_juegos"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintTop_toBottomOf="@id/spinner_juegos"
+        app:layout_constraintBottom_toBottomOf="parent"
      />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -109,8 +109,6 @@ public class DataHelper extends SQLiteOpenHelper {
 
         if (gameCourses.moveToFirst()) {
             precio = gameCourses.getInt(0);
-            // TODO: borrar log
-            Log.v("database", String.valueOf(precio));
         }
 
         db.close();
@@ -128,21 +126,11 @@ public class DataHelper extends SQLiteOpenHelper {
                     values,
                     SchemaDB.GAMES_NAME + " = ?",
                     new String[]{nombre});
-            Toast.makeText(context, "Anadido al carrito", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Modificado el carrito", Toast.LENGTH_SHORT).show();
         }catch(SQLException ex){
             Log.d("database","update data failure");
         }
 
-        /*String querty = String.format("UPDATE %s SET %s = " + buy + " WHERE %s LIKE '%s'",
-                SchemaDB.TAB_NAME, SchemaDB.GAMES_BUY, SchemaDB.GAMES_NAME, nombre);
-        Object[] bindArgs={nombre};
-        try{
-            db.execSQL(querty, bindArgs);
-            Log.v("cheked","Cambio" + nombre);
-            //Toast.makeText(context, "Anadido al carrito", Toast.LENGTH_SHORT).show();
-        }catch(SQLException ex){
-            Log.d("database","update data failure");
-        }*/
         db.close();
     }
 }
