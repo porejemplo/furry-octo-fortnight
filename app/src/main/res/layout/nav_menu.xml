@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <menu>
+            <item
+                android:id = "@+id/nav_juegos"
+                android:icon = "@drawable/game"
+                android:title = "Juegos"
+                />
+            <item
+                android:id = "@+id/nav_ofertas"
+                android:icon = "@drawable/sale"
+                android:title = "Ofertas"
+                />
+            <item
+                android:id = "@+id/nav_carrito"
+                android:icon = "@drawable/carrito"
+                android:title = "Carrito"
+                />
+        </menu>
+    </item>
+</menu>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/conej/AndroidStudioProjects/PracticaFinal/app/src/main/res/layout/activity_carrito.xml" value="0.2" />
+        <entry key="..\:/Users/conej/AndroidStudioProjects/PracticaFinal/app/src/main/res/layout/activity_juegos.xml" value="0.2" />
+        <entry key="..\:/Users/conej/AndroidStudioProjects/PracticaFinal/app/src/main/res/layout/activity_main.xml" value="0.19074074074074074" />
+        <entry key="..\:/Users/conej/AndroidStudioProjects/PracticaFinal/app/src/main/res/layout/activity_ofertas.xml" value="0.2" />
+        <entry key="..\:/Users/conej/AndroidStudioProjects/PracticaFinal/app/src/main/res/layout/fragment_carrito.xml" value="0.20010422094841063" />
+        <entry key="..\:/Users/conej/AndroidStudioProjects/PracticaFinal/app/src/main/res/layout/fragment_juegos.xml" value="0.1" />
+        <entry key="..\:/Users/conej/AndroidStudioProjects/PracticaFinal/app/src/main/res/layout/fragment_ofertas.xml" value="0.20010422094841063" />
+        <entry key="..\:/Users/conej/AndroidStudioProjects/PracticaFinal/app/src/main/res/layout/fragment_welcome.xml" value="0.19074074074074074" />
+        <entry key="..\:/Users/conej/AndroidStudioProjects/PracticaFinal/app/src/main/res/layout/item_juego.xml" value="0.2" />
+        <entry key="..\:/Users/conej/AndroidStudioProjects/PracticaFinal/app/src/main/res/layout/layout_main.xml" value="0.19074074074074074" />
+        <entry key="..\:/Users/conej/AndroidStudioProjects/PracticaFinal/app/src/main/res/layout/nav_header.xml" value="0.2" />
+        <entry key="..\:/Users/conej/AndroidStudioProjects/PracticaFinal/app/src/main/res/layout/nav_menu.xml" value="0.2" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
