@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Ofertas" />
+        android:layout_height="wrap_content"
+        android:id="@+id/recycler_ofertas"
+    />
 
 </LinearLayout>

@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="10dp"
-    android:id="@+id/item_id">
+    android:id="@+id/item_carrito_id"
+    android:gravity="center">
 
     <ImageView
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:id="@+id/item_img"
+        android:layout_width="50dp"
+        android:layout_height="80dp"
+        android:id="@+id/item_carrito_img"
         android:src="@drawable/ic_launcher_background"
-    />
+        />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="270dp"
         android:layout_height="match_parent"
-        android:id="@+id/item_text_nombre"
+        android:id="@+id/item_carrito_text_nombre"
         android:gravity="center"
         android:text="Nombre"
         android:textSize="25sp"
-    />
+        />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/item_text_precio"
+        android:id="@+id/item_carrito_text_precio"
         android:gravity="center"
         android:text="00,00€"
         android:textSize="20sp"
-    />
+        />
 
 
 </LinearLayout>

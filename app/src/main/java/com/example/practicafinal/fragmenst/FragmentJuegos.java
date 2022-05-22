@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,13 +29,8 @@ import java.util.List;
 public class FragmentJuegos extends Fragment {
     private View view;
     private DataHelper dataHelper;
-    private SQLiteDatabase database;
-    private Cursor cursor;
-    private SimpleCursorAdapter adapter;
-    private ListView listView;
 
     private RecyclerView recyclerView;
-    private List<GameModel> gameModelList;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -49,7 +45,8 @@ public class FragmentJuegos extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycler_juegos);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager( new LinearLayoutManager(getContext()));
+        //recyclerView.setLayoutManager( new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager( new GridLayoutManager( getContext(), 2));
 
         return view;
     }

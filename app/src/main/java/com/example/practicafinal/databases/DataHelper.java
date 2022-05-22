@@ -58,12 +58,16 @@ public class DataHelper extends SQLiteOpenHelper {
     }
 
     public ArrayList<GameModel> readGames() {
+        return readGames("");
+    }
+
+    public ArrayList<GameModel> readGames(String where) {
         // on below line we are creating a
         // database for reading our database.
         SQLiteDatabase db = this.getReadableDatabase();
 
         // on below line we are creating a cursor with query to read data from database.
-        Cursor gameCourses = db.rawQuery("SELECT * FROM " + SchemaDB.TAB_NAME, null);
+        Cursor gameCourses = db.rawQuery("SELECT * FROM " + SchemaDB.TAB_NAME + where, null);
 
         // on below line we are creating a new array list.
         ArrayList<GameModel> gameModelArrayList = new ArrayList<>();
