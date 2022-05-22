@@ -69,12 +69,7 @@ public class FragmentJuegos extends Fragment implements AdapterView.OnItemSelect
     @Override
     public void onResume() {
         super.onResume();
-        if (seleccion == 0) {
-            recyclerView.setAdapter(new GameRVAdapter(dataHelper.readGames(), getContext()));
-        }
-        else {
-            recyclerView.setAdapter(new GameRVAdapter(dataHelper.readGames(" WHERE " + SchemaDB.GAMES_CONSOLE + " LIKE " + courses[seleccion]), getContext()));
-        }
+        cargarLista();
     }
 
     @Override
@@ -82,17 +77,20 @@ public class FragmentJuegos extends Fragment implements AdapterView.OnItemSelect
         String item = courses[i];
         seleccion = i;
 
-        if (seleccion == 0) {
-            recyclerView.setAdapter(new GameRVAdapter(dataHelper.readGames(), getContext()));
-        } else {
-            recyclerView.setAdapter(new GameRVAdapter(dataHelper.readGames(" WHERE " + SchemaDB.GAMES_CONSOLE + " LIKE '" + courses[seleccion] + "'"), getContext()));
-        }
-
+        cargarLista();
         Toast.makeText(getContext(), "Filtrando: " + item, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    public void cargarLista () {
+        if (seleccion == 0) {
+            recyclerView.setAdapter(new GameRVAdapter(dataHelper.readGames(), getContext()));
+        } else {
+            recyclerView.setAdapter(new GameRVAdapter(dataHelper.readGames(" WHERE " + SchemaDB.GAMES_CONSOLE + " LIKE '" + courses[seleccion] + "'"), getContext()));
+        }
     }
 }
